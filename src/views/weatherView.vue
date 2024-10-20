@@ -47,7 +47,7 @@
 <script>
 import axios from 'axios';
 
-const apikey = '08a394c1636f7dae22fa19d110d45d12';
+const apikey = import.meta.env.VITE_OPENWEATHER_APIKEY;
 
 export default {
   name: 'app',
@@ -76,12 +76,12 @@ export default {
     //get current weather icon using API link
     iconUrl() {
       return this.weatherData
-        ? `http://api.openweathermap.org/img/w/${this.weatherData.weather[0].icon}.png`
+        ? `https://api.openweathermap.org/img/w/${this.weatherData.weather[0].icon}.png`
         : null
     },
     cityiconurl() {
       return this.cityWeatherData
-        ? `http://api.openweathermap.org/img/w/${this.cityWeatherData.weather[0].icon}.png`
+        ? `https://api.openweathermap.org/img/w/${this.cityWeatherData.weather[0].icon}.png`
         : null
     },
     citytemperature() {
@@ -106,7 +106,7 @@ export default {
         navigator.geolocation.getCurrentPosition(async (position) => {
           const { latitude, longitude } = position.coords
           //api link to obtain current weather based on current location browser identified
-          const url = `http://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&appid=${apikey}`
+          const url = `https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&appid=${apikey}`
           //await means wait for the fetchWeatherData method to complete before proceed
           await this.fetchWeatherData(url)
         })
