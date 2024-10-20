@@ -13,7 +13,7 @@ module.exports = {
   },
   // 在ESLint配置文件中添加Node.js环境支持。
   // 这样ESLint会识别Node.js的全局变量, e.g. process
-  "env": {
-    "node": true
+  env: {
+    node: true
   }
 }
